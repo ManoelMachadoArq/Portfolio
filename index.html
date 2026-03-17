@@ -351,7 +351,7 @@
     .skills-title em { font-style:italic; color:var(--text-dim); }
     .skills-desc { font-family:var(--font-mono); font-size:.75rem; letter-spacing:.15em; line-height:1.85; color:var(--text-muted); margin-top:1.5rem; text-align:justify; }
     .tags-wrap { display:flex; flex-wrap:wrap; gap:.7rem; }
-    .tag { font-family:var(--font-mono); font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; padding:.65rem 1.3rem; border:1px solid var(--line-bright); color:var(--text-dim); position:relative; overflow:hidden; transition:color .35s,border-color .35s; }
+    .tag { font-family:var(--font-mono); font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; padding:.65rem 1.3rem; border:1px solid var(--line-bright); color:var(--text-dim); position:relative; overflow:hidden; transition:color .35s,border-color .35s; cursor:none; }
     .tag::before { content:''; position:absolute; inset:0; background:var(--btn-fill); transform:translateX(-101%); transition:transform .35s; }
     .tag:hover { color:var(--btn-fill-txt); border-color:var(--btn-fill); }
     .tag:hover::before { transform:translateX(0); }
@@ -376,9 +376,6 @@
     .rev.vis { opacity:1; transform:translateY(0); }
     .rev.d1{transition-delay:.1s;} .rev.d2{transition-delay:.2s;} .rev.d3{transition-delay:.3s;} .rev.d4{transition-delay:.4s;}
 
-    /* ============================================================
-       MOBILE
-    ============================================================ */
     @media(max-width:900px){
       nav{padding:1.5rem;} nav.scrolled{padding:1rem 1.5rem;} .nav-links{display:none;}
       .section-wrap{padding:6rem 1.5rem;} #hero{padding:0 1.5rem;} .hero-scroll{right:1.5rem;}
@@ -388,7 +385,6 @@
       .prog-cat{display:none;}
       .exp-layout{grid-template-columns:1fr;gap:3rem;}
       .exp-summary{height:auto;}
-      /* ✦ CORREÇÃO: reduz fonte no mobile para "complementares" caber sem quebrar */
       .skills-title{font-size:clamp(1.3rem,5.2vw,2.5rem);}
       .skills-card{padding:1.2rem;}
       .sk-tag{font-size:.6rem;letter-spacing:.08em;padding:.3rem .6rem;}
@@ -423,11 +419,11 @@
 <nav id="nav">
   <span class="nav-brand">MM — ARQ 2026</span>
   <ul class="nav-links">
-    <li><a href="#sobre">Sobre</a></li>
-    <li><a href="#experiencias">Experiências</a></li>
-    <li><a href="#programas">Programas</a></li>
-    <li><a href="#habilidades">Habilidades</a></li>
-    <li><a href="#contato">Contato</a></li>
+    <li><a href="#sobre" data-secao="sobre">Sobre</a></li>
+    <li><a href="#experiencias" data-secao="experiencias">Experiências</a></li>
+    <li><a href="#programas" data-secao="programas">Programas</a></li>
+    <li><a href="#habilidades" data-secao="habilidades">Habilidades</a></li>
+    <li><a href="#contato" data-secao="contato">Contato</a></li>
   </ul>
   <div class="mode-group" id="modeGroup">
     <button class="mode-btn active" data-mode="night" title="Modo Noturno">
@@ -695,25 +691,24 @@
     <div class="section-tag rev">04 — Complementar</div>
     <div class="skills-grid">
       <div class="rev d1">
-        <!-- ✦ CORREÇÃO: removido <br> e hífen manual — fonte encolhe via CSS no mobile -->
         <h2 class="skills-title">Habilidades<br><em>complementares</em></h2>
         <p class="skills-desc">Ferramentas e conhecimentos de suporte que complementam o processo criativo e técnico.</p>
       </div>
       <div class="tags-wrap rev d2">
-        <div class="tag"><span>After Effects</span></div>
-        <div class="tag"><span>InDesign</span></div>
-        <div class="tag"><span>TwinMotion</span></div>
-        <div class="tag"><span>Illustrator</span></div>
-        <div class="tag"><span>Excel Avançado</span></div>
-        <div class="tag"><span>Dynamo</span></div>
-        <div class="tag"><span>Microsoft Office</span></div>
-        <div class="tag"><span>AGI32</span></div>
-        <div class="tag"><span>Adobe Audition</span></div>
-        <div class="tag"><span>Render por IA</span></div>
-        <div class="tag"><span>Python</span></div>
-        <div class="tag"><span>HTML</span></div>
-        <div class="tag"><span>Figma</span></div>
-        <div class="tag"><span>Navisworks</span></div>
+        <div class="tag" onclick="trackHabilidade(this)"><span>After Effects</span></div>
+        <div class="tag" onclick="trackHabilidade(this)"><span>InDesign</span></div>
+        <div class="tag" onclick="trackHabilidade(this)"><span>TwinMotion</span></div>
+        <div class="tag" onclick="trackHabilidade(this)"><span>Illustrator</span></div>
+        <div class="tag" onclick="trackHabilidade(this)"><span>Excel Avançado</span></div>
+        <div class="tag" onclick="trackHabilidade(this)"><span>Dynamo</span></div>
+        <div class="tag" onclick="trackHabilidade(this)"><span>Microsoft Office</span></div>
+        <div class="tag" onclick="trackHabilidade(this)"><span>AGI32</span></div>
+        <div class="tag" onclick="trackHabilidade(this)"><span>Adobe Audition</span></div>
+        <div class="tag" onclick="trackHabilidade(this)"><span>Render por IA</span></div>
+        <div class="tag" onclick="trackHabilidade(this)"><span>Python</span></div>
+        <div class="tag" onclick="trackHabilidade(this)"><span>HTML</span></div>
+        <div class="tag" onclick="trackHabilidade(this)"><span>Figma</span></div>
+        <div class="tag" onclick="trackHabilidade(this)"><span>Navisworks</span></div>
       </div>
     </div>
   </div>
@@ -725,7 +720,7 @@
     <div class="section-tag rev" style="justify-content:center">05 — Contato</div>
     <h2 class="contact-head rev d1">Vamos<br><em>trabalhar</em><br>juntos?</h2>
     <div class="contact-row rev d2">
-      <a href="https://wa.me/5532991492750" class="contact-card" target="_blank" rel="noopener">
+      <a href="https://wa.me/5532991492750" class="contact-card" target="_blank" rel="noopener" onclick="gtag('event','contato_clique',{canal:'whatsapp'});">
         <span class="cc-icon" style="font-family:var(--font-mono);font-size:.85rem">WA</span>
         <span class="cc-lbl">WhatsApp</span>
         <span class="cc-val">(32) 9 9149‑2750</span>
@@ -735,12 +730,12 @@
         <span class="cc-lbl">E-mail</span>
         <span class="cc-val" id="emailVal">—</span>
       </div>
-      <a href="https://www.linkedin.com/in/manoel-machado-4267942bb/" class="contact-card" target="_blank" rel="noopener">
+      <a href="https://www.linkedin.com/in/manoel-machado-4267942bb/" class="contact-card" target="_blank" rel="noopener" onclick="gtag('event','contato_clique',{canal:'linkedin'});">
         <span class="cc-icon" style="font-family:var(--font-mono);font-size:.9rem;letter-spacing:.05em">in</span>
         <span class="cc-lbl">LinkedIn</span>
         <span class="cc-val">Manoel Machado</span>
       </a>
-      <a href="https://github.com/ManoelMachadoArq" class="contact-card" target="_blank" rel="noopener">
+      <a href="https://github.com/ManoelMachadoArq" class="contact-card" target="_blank" rel="noopener" onclick="gtag('event','contato_clique',{canal:'github'});">
         <span class="cc-icon" style="font-family:var(--font-mono);font-size:.85rem">{ }</span>
         <span class="cc-lbl">GitHub</span>
         <span class="cc-val">ManoelMachadoArq</span>
@@ -769,6 +764,9 @@
 </footer>
 
 <script>
+  /* ============================================================
+     EMAIL
+  ============================================================ */
   (function(){
     var u='manoelmachado.arq', d='gmail.com';
     var vl=document.getElementById('emailVal');
@@ -779,6 +777,8 @@
   function copyEmail(){
     var email=window._emailAddress;
     if(!email)return;
+    /* ✦ RASTREIO: copiar e-mail */
+    gtag('event','contato_clique',{canal:'email_copiado'});
     navigator.clipboard.writeText(email).then(function(){
       showToast('E-mail copiado!');
       var icon=document.getElementById('emailIcon');
@@ -794,6 +794,17 @@
     });
   }
 
+  /* ============================================================
+     HABILIDADES COMPLEMENTARES — clique na tag
+  ============================================================ */
+  function trackHabilidade(el){
+    var nome = el.querySelector('span') ? el.querySelector('span').textContent : el.textContent;
+    gtag('event','habilidade_clicada',{habilidade: nome.trim()});
+  }
+
+  /* ============================================================
+     TOAST
+  ============================================================ */
   var _toastTimer=null;
   function showToast(msg){
     var t=document.getElementById('toast');
@@ -815,6 +826,9 @@
     },2200);
   }
 
+  /* ============================================================
+     CURSOR
+  ============================================================ */
   var dot=document.getElementById('cDot'), ring=document.getElementById('cRing');
   var mx=0,my=0,rx=0,ry=0;
   document.addEventListener('mousemove',function(e){
@@ -829,9 +843,22 @@
     el.addEventListener('mouseleave',function(){document.body.classList.remove('hovered');});
   });
 
+  /* ============================================================
+     NAV SCROLL + CLIQUE
+  ============================================================ */
   var nav=document.getElementById('nav');
   window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>70);});
 
+  /* ✦ RASTREIO: clique nos links de navegação */
+  document.querySelectorAll('.nav-links a[data-secao]').forEach(function(link){
+    link.addEventListener('click',function(){
+      gtag('event','nav_click',{secao: link.getAttribute('data-secao')});
+    });
+  });
+
+  /* ============================================================
+     MODO (Noturno / Diurno / Circadiano)
+  ============================================================ */
   var currentMode = 'night';
   var ROOT = document.documentElement;
 
@@ -966,6 +993,9 @@
   }
 
   function setMode(mode){
+    /* ✦ RASTREIO: troca de tema */
+    gtag('event','trocar_tema',{modo: mode});
+
     currentMode=mode;
     document.querySelectorAll('.mode-btn').forEach(function(btn){
       btn.classList.toggle('active', btn.dataset.mode===mode);
@@ -1014,6 +1044,9 @@
     if(saved==='day'||saved==='circadian') setMode(saved);
   }catch(e){}
 
+  /* ============================================================
+     CIRCADIAN SVG
+  ============================================================ */
   var CX=140, CY=132, CR=110;
 
   function hourToAngle(h){ return (Math.max(6,Math.min(18,h))-12)*15; }
@@ -1073,12 +1106,18 @@
   }
 
   var svgWrap=document.getElementById('circSvgWrap');
+  var _circDragTracked=false;
   if(svgWrap){
     svgWrap.addEventListener('mousedown',function(e){
       if(currentMode!=='circadian')return;
       isDragging=true;
       circManualHour=svgEventToHour(e);
       document.getElementById('circAutoBtn').classList.remove('active');
+      /* ✦ RASTREIO: ajuste manual do relógio circadiano */
+      if(!_circDragTracked){
+        _circDragTracked=true;
+        gtag('event','circadiano_ajuste_manual',{hora: Math.round(circManualHour)});
+      }
       circUpdate();
     });
     svgWrap.addEventListener('touchstart',function(e){
@@ -1086,6 +1125,10 @@
       isDragging=true;
       circManualHour=svgEventToHour(e);
       document.getElementById('circAutoBtn').classList.remove('active');
+      if(!_circDragTracked){
+        _circDragTracked=true;
+        gtag('event','circadiano_ajuste_manual',{hora: Math.round(circManualHour)});
+      }
       circUpdate();
     },{passive:true});
   }
@@ -1109,13 +1152,34 @@
   });
 
   document.getElementById('circMinBtn').addEventListener('click',function(){
-    document.getElementById('circWidget').classList.toggle('minimized');
+    var w=document.getElementById('circWidget');
+    w.classList.toggle('minimized');
+    /* ✦ RASTREIO: widget minimizado/expandido */
+    gtag('event','widget_minimizado',{estado: w.classList.contains('minimized') ? 'minimizado' : 'expandido'});
   });
 
+  /* ============================================================
+     INTERSECTION OBSERVERS
+  ============================================================ */
   var revObs=new IntersectionObserver(function(entries){
     entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('vis');});
   },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.rev,.section-tag,[data-divider]').forEach(function(el){revObs.observe(el);});
+
+  /* ✦ RASTREIO: seção visitada (1x por sessão) */
+  var _secVisited = {};
+  var secObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting && e.intersectionRatio >= 0.3){
+        var id = e.target.id;
+        if(id && !_secVisited[id]){
+          _secVisited[id] = true;
+          gtag('event','secao_visitada',{secao: id});
+        }
+      }
+    });
+  },{threshold:0.3});
+  document.querySelectorAll('section[id]').forEach(function(s){secObs.observe(s);});
 
   var bgColorsNight={hero:'#070707',sobre:'#080a08',experiencias:'#08090b',programas:'#07090b',habilidades:'#0a0809',contato:'#090708'};
   var bgColorsDay  ={hero:'#f4f1ec',sobre:'#f2efea',experiencias:'#f0eee9',programas:'#f1eeea',habilidades:'#f3f0eb',contato:'#f2efea'};
@@ -1129,6 +1193,9 @@
   },{threshold:0.4});
   document.querySelectorAll('section[id]').forEach(function(s){bgObs.observe(s);});
 
+  /* ============================================================
+     TYPEWRITER
+  ============================================================ */
   var twEl=document.getElementById('typewriterEl');
   var twText='Arquiteto & Urbanista  ·  Juiz de Fora, MG';
   var twI=0;
@@ -1140,6 +1207,9 @@
   }
   setTimeout(typeChar,2600);
 
+  /* ============================================================
+     CONTADORES ANIMADOS
+  ============================================================ */
   var cObs=new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(!e.isIntersecting)return;
@@ -1152,10 +1222,20 @@
   },{threshold:0.5});
   document.querySelectorAll('[data-count]').forEach(function(el){cObs.observe(el);});
 
+  /* ============================================================
+     PROGRAMAS (ACCORDION) + RASTREIO
+  ============================================================ */
   function toggleProg(head){
     var item=head.parentElement, isOpen=item.classList.contains('open');
     document.querySelectorAll('.prog-item.open').forEach(function(el){el.classList.remove('open');});
-    if(!isOpen)item.classList.add('open');
+    if(!isOpen){
+      item.classList.add('open');
+      /* ✦ RASTREIO: programa aberto */
+      var nomeProg = item.querySelector('.prog-name');
+      if(nomeProg){
+        gtag('event','programa_aberto',{programa: nomeProg.textContent.trim()});
+      }
+    }
   }
 
   document.querySelectorAll('.prog-item').forEach(function(item){
@@ -1169,9 +1249,15 @@
     });
   });
 
+  /* ============================================================
+     PARALLAX HERO
+  ============================================================ */
   var wm=document.querySelector('.hero-watermark');
   window.addEventListener('scroll',function(){if(wm)wm.style.transform='translateY(calc(-50% + '+window.scrollY*.18+'px)) rotate(90deg)';});
 
+  /* ============================================================
+     TAGS ANIMADAS
+  ============================================================ */
   var tw=document.querySelector('.tags-wrap');
   if(tw){
     var tObs=new IntersectionObserver(function(entries){
@@ -1188,6 +1274,9 @@
     tObs.observe(tw);
   }
 
+  /* ============================================================
+     EXPERIÊNCIAS + RASTREIO
+  ============================================================ */
   var skillTips = {
     'SketchUp':'Modelagem 3D de interiores e arquitetura','V-Ray':'Renderização','AutoCAD':'Desenho técnico e documentação de projetos',
     'Detalhamento técnico':'Elaboração de detalhamento de mobiliário','Leitura de projetos':'Interpretação de plantas e documentação técnica',
@@ -1288,14 +1377,31 @@
     var e=experiences[curExp]; var totalSlots=e.images.length+1; var newImg=curImg+dir;
     if(newImg>=totalSlots){if(curExp<experiences.length-1){curExp++;curImg=0;renderExp(true);}}
     else if(newImg<0){if(curExp>0){curExp--;curImg=experiences[curExp].images.length;renderExp(true);}}
-    else{curImg=newImg;renderImg();}
+    else{
+      curImg=newImg;
+      /* ✦ RASTREIO: imagem da experiência navegada */
+      if(curImg>0){
+        gtag('event','img_experiencia_navegada',{
+          empresa: experiences[curExp].company.replace(/&amp;/g,'&').replace(/<[^>]+>/g,''),
+          imagem_indice: curImg
+        });
+      }
+      renderImg();
+    }
   }
 
   function expNavigate(dir){
     if(_autoTimer){clearTimeout(_autoTimer);_autoTimer=null;}
     var newExp=curExp+dir;
     if(newExp>=0&&newExp<experiences.length){
-      curExp=newExp;curImg=0;renderExp(true);
+      curExp=newExp;curImg=0;
+      /* ✦ RASTREIO: experiência navegada */
+      var e=experiences[curExp];
+      gtag('event','experiencia_navegada',{
+        empresa: e.company.replace(/&amp;/g,'&').replace(/<[^>]+>/g,''),
+        posicao: curExp+1
+      });
+      renderExp(true);
       if(dir===1&&experiences[curExp].images.length>0){
         _autoTimer=setTimeout(function(){_autoTimer=null;curImg=1;renderImg();},700);
       }
@@ -1304,7 +1410,10 @@
 
   renderExp(false);
 
-  var lbGallery=[], lbIndex=0;
+  /* ============================================================
+     LIGHTBOX + RASTREIO
+  ============================================================ */
+  var lbGallery=[], lbIndex=0, _lbOpenTime=0, _lbImgVistas=0, _lbPrograma='';
 
   document.querySelectorAll('.gal-cell').forEach(function(cell){
     var img=cell.querySelector('img');
@@ -1319,7 +1428,10 @@
     cell.addEventListener('click',function(){
       var gallery=[];
       var progItem=cell.closest('.prog-item');
+      var progNome='';
       if(progItem){
+        var pn=progItem.querySelector('.prog-name');
+        if(pn) progNome=pn.textContent.trim();
         progItem.querySelectorAll('.gal-cell').forEach(function(c){
           var m=c.querySelector('img,video');
           var l=c.querySelector('.gal-overlay-txt');
@@ -1328,12 +1440,19 @@
       }
       var clickedIdx=0; var media=cell.querySelector('img,video');
       if(media){var clickedSrc=media.src||media.currentSrc;for(var i=0;i<gallery.length;i++){if(gallery[i].src===clickedSrc){clickedIdx=i;break;}}}
-      openLightboxGallery(gallery,clickedIdx);
+      openLightboxGallery(gallery,clickedIdx,progNome);
     });
   });
 
-  function openLightboxGallery(gallery,idx){
+  function openLightboxGallery(gallery,idx,programa){
     lbGallery=gallery; lbIndex=idx;
+    _lbOpenTime=Date.now(); _lbImgVistas=1; _lbPrograma=programa||'';
+    /* ✦ RASTREIO: galeria aberta */
+    gtag('event','galeria_aberta',{
+      programa: _lbPrograma,
+      imagem_indice: idx+1,
+      total_imagens: gallery.length
+    });
     _renderLbSlide(false);
     document.getElementById('lightbox').classList.add('open');
     document.body.style.overflow='hidden';
@@ -1365,30 +1484,56 @@
   function lbNavigate(dir){
     var newIdx=lbIndex+dir;
     if(newIdx<0||newIdx>=lbGallery.length)return;
-    lbIndex=newIdx; _renderLbSlide(true);
+    lbIndex=newIdx;
+    _lbImgVistas++;
+    /* ✦ RASTREIO: galeria navegada */
+    gtag('event','galeria_navegada',{
+      programa: _lbPrograma,
+      imagem_indice: lbIndex+1
+    });
+    _renderLbSlide(true);
   }
 
-  function openLightbox(src,label,video){openLightboxGallery([{src:src,label:label,video:video}],0);}
+  function openLightbox(src,label,video,programa){openLightboxGallery([{src:src,label:label,video:video}],0,programa||'');}
 
   function closeLightbox(){
     var wrap=document.getElementById('lbImgWrap'); var v=wrap.querySelector('video');
     if(v)v.pause();
+    /* ✦ RASTREIO: galeria fechada */
+    if(_lbOpenTime>0){
+      var tempo=Math.round((Date.now()-_lbOpenTime)/1000);
+      gtag('event','galeria_fechada',{
+        programa: _lbPrograma,
+        tempo_segundos: tempo,
+        imagens_vistas: _lbImgVistas
+      });
+      _lbOpenTime=0;
+    }
     document.getElementById('lightbox').classList.remove('open');
     document.body.style.overflow='';
     lbGallery=[];lbIndex=0;
   }
 
+  /* ============================================================
+     TOOLTIP HABILIDADES
+  ============================================================ */
   var skTip=document.createElement('div'); skTip.className='sk-tooltip'; document.body.appendChild(skTip);
   document.addEventListener('mouseover',function(e){var t=e.target.closest('.sk-tag');if(t&&t.title){skTip.textContent=t.title;skTip.classList.add('show');}});
   document.addEventListener('mouseout',function(e){if(e.target.closest('.sk-tag')){skTip.classList.remove('show');}});
   document.addEventListener('mousemove',function(e){skTip.style.left=(e.clientX+18)+'px';skTip.style.top=(e.clientY-10)+'px';});
 
+  /* ============================================================
+     TECLADO LIGHTBOX
+  ============================================================ */
   document.addEventListener('keydown',function(e){
     if(e.key==='Escape') closeLightbox();
     if(e.key==='ArrowLeft')  lbNavigate(-1);
     if(e.key==='ArrowRight') lbNavigate(1);
   });
 
+  /* ============================================================
+     TOUCH LIGHTBOX
+  ============================================================ */
   (function(){
     var box=document.getElementById('lightbox'), touchStartX=0, touchStartY=0;
     box.addEventListener('touchstart',function(e){touchStartX=e.touches[0].clientX;touchStartY=e.touches[0].clientY;},{passive:true});
@@ -1402,8 +1547,120 @@
   document.getElementById('expImgMain').addEventListener('click',function(){
     if(curImg===0)return;
     var e=experiences[curExp]; var src=e.images[curImg-1];
-    if(src)openLightbox(src,e.company.replace(/&amp;/g,'&'),isVideo(src));
+    if(src)openLightbox(src,e.company.replace(/&amp;/g,'&'),isVideo(src),e.company.replace(/&amp;/g,'&').replace(/<[^>]+>/g,''));
   });
+
+  /* ============================================================
+     ✦ RASTREIO: ENGAJAMENTO POR TEMPO (30s, 60s, 120s, 300s)
+  ============================================================ */
+  var _engTimers = [30,60,120,300];
+  _engTimers.forEach(function(seg){
+    setTimeout(function(){
+      gtag('event','engajamento_tempo',{segundos: seg});
+    }, seg*1000);
+  });
+
+  /* ============================================================
+     ✦ RASTREIO: PROFUNDIDADE DE SCROLL (25%, 50%, 75%, 100%)
+  ============================================================ */
+  var _scrollMarcas = {25:false, 50:false, 75:false, 100:false};
+  window.addEventListener('scroll',function(){
+    var scrolled = window.scrollY;
+    var totalH   = document.documentElement.scrollHeight - window.innerHeight;
+    if(totalH <= 0) return;
+    var pct = Math.round((scrolled/totalH)*100);
+    [25,50,75,100].forEach(function(m){
+      if(pct >= m && !_scrollMarcas[m]){
+        _scrollMarcas[m] = true;
+        gtag('event','profundidade_scroll',{percentual: m});
+      }
+    });
+  });
+
+  /* ============================================================
+     ✦ RASTREIO: TIPO DE DISPOSITIVO (ao carregar)
+  ============================================================ */
+  (function(){
+    var w = window.innerWidth;
+    var tipo = w <= 768 ? 'mobile' : 'desktop';
+    gtag('event','tipo_dispositivo',{
+      tipo: tipo,
+      largura_tela: w
+    });
+  })();
+
+  /* ============================================================
+     ✦ RASTREIO: PRIMEIRA VISITA
+  ============================================================ */
+  (function(){
+    try {
+      if(!localStorage.getItem('mm_visited')){
+        localStorage.setItem('mm_visited','1');
+        gtag('event','primeira_visita',{});
+      }
+    }catch(e){}
+  })();
+
+  /* ============================================================
+     ✦ RASTREIO: ORIGEM DO TRÁFEGO
+  ============================================================ */
+  (function(){
+    var ref = document.referrer;
+    var tipo = 'direto';
+    if(ref){
+      if(/google|bing|yahoo|duckduckgo|baidu/i.test(ref))       tipo = 'busca';
+      else if(/linkedin|instagram|facebook|twitter|whatsapp/i.test(ref)) tipo = 'redes_sociais';
+      else tipo = 'referral';
+    }
+    gtag('event','origem_trafego',{tipo: tipo, referrer: ref || '(direto)'});
+  })();
+
+  /* ============================================================
+     ✦ RASTREIO: PRIMEIRO SCROLL (tempo até rolar pela 1ª vez)
+  ============================================================ */
+  var _pgStart = Date.now();
+  var _primeiroScrollFeito = false;
+  window.addEventListener('scroll', function(){
+    if(_primeiroScrollFeito) return;
+    _primeiroScrollFeito = true;
+    var ms = Date.now() - _pgStart;
+    gtag('event','primeiro_scroll',{milissegundos: ms});
+  }, {once: true});
+
+  /* ============================================================
+     ✦ RASTREIO: TEMPO POR SEÇÃO
+  ============================================================ */
+  var _secTempos = {};
+  var _secEntrou = {};
+  var secTempoObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      var id = e.target.id; if(!id) return;
+      if(e.isIntersecting){
+        _secEntrou[id] = Date.now();
+      } else {
+        if(_secEntrou[id]){
+          var seg = Math.round((Date.now() - _secEntrou[id]) / 1000);
+          _secTempos[id] = (_secTempos[id] || 0) + seg;
+          delete _secEntrou[id];
+          if(seg >= 3){
+            gtag('event','tempo_secao',{secao: id, segundos: seg});
+          }
+        }
+      }
+    });
+  },{threshold: 0.4});
+  document.querySelectorAll('section[id]').forEach(function(s){ secTempoObs.observe(s); });
+
+  /* ============================================================
+     ✦ RASTREIO: SAÍDA DA PÁGINA (tempo total)
+  ============================================================ */
+  document.addEventListener('visibilitychange', function(){
+    if(document.visibilityState === 'hidden'){
+      var tempo = Math.round((Date.now() - _pgStart) / 1000);
+      gtag('event','saida_pagina',{tempo_total_segundos: tempo});
+    }
+  });
+
 </script>
 </body>
 </html>
